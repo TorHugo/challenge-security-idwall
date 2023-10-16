@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.dev.torhugo</groupId>
     <artifactId>challenge_idwall</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>challenge_idwall</name>
     <description>challenge_idwall</description>
     <properties>

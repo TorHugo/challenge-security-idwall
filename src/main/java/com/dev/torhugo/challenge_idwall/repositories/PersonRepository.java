@@ -16,7 +16,5 @@ public interface PersonRepository {
      * @param externalId the external id
      * @return the person model
      */
-
-
-                                               ;
+    PersonModel retrieveByExternalReference(final String externalId);
 }

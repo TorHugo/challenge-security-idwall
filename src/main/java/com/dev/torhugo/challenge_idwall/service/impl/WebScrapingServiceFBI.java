@@ -4,49 +4,59 @@ import com.dev.torhugo.challenge_idwall.client.HttpClientService;
 import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.ResourceNotFoundException;
+import com.dev.torhugo.challenge_idwall.mapper.PersonMapper;
+import com.dev.torhugo.challenge_idwall.repositories.PersonRepository;
 import com.dev.torhugo.challenge_idwall.util.AgencyType;
-import lombok.RequiredArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.HOST_FBI;
+import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_FBI;
+
 @Component
 @Slf4j
-@RequiredArgsConstructor
 @AgencyType("fbi")
 public class WebScrapingServiceFBI extends AbstractWebScrapingService {
-
     private final HttpClientService service;
+    public WebScrapingServiceFBI(PersonRepository personRepository,
+                                 PersonMapper personMapper,
+                                 HttpClientService service) {
+        super(personRepository, personMapper);
+        this.service = service;
+    }
 
     @Override
     public Object webScrapingMethod() {
         log.info("[FBI] - Initial process web-scraping.");
         try {
             while (true){
-                log.info("[1] - PageSize: {}.", INITIAL_VALUE);
-                ObjectResponseDTO response = service.requestToFBI(HOST_FBI, PATH_FBI, buildRequestParams(INITIAL_VALUE));
+                log.info("[1] - PageSize: {}.", initialValue);
+                final ObjectResponseDTO response = requestToFBI(initialValue);
                 log.info("[2] - Validating to response.");
                 if (response.getItems().isEmpty())
                     break;
-
                 log.info("[3] - Saving to database.");
                 savingToResponse(response);
-                // método para salvar no banco
-
                 log.info("[4] - Increment pageSize.");
-                INITIAL_VALUE ++;
+                initialValue += 1;
             }
 
-            return INITIAL_VALUE;
+            return initialValue;
         } catch (RuntimeException e) {
-            throw new ResourceNotFoundException("[ERRO] An error occurred while converting the response. Error: " + e.getMessage());
+            throw new ResourceNotFoundException("[ERROR] An error occurred while converting the response. Error: " + e.getMessage());
         }
+    }
+
+    private ObjectResponseDTO requestToFBI(final Integer initialValue) {
+        return service.requestToFBI(HOST_FBI, PATH_FBI, buildRequestParams(initialValue));
     }
 
     private void savingToResponse(final ObjectResponseDTO response) {
         response.getItems().forEach(item -> {
-            PersonModel personModel = savingToDatabase(mappingToPerson(item));
+            final PersonModel personModel = super.savingToDatabase(super.mappingToPerson(item));
         });
     }
 

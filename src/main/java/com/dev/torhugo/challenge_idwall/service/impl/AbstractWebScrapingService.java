@@ -1,32 +1,26 @@
 package com.dev.torhugo.challenge_idwall.service.impl;
 
-import com.dev.torhugo.challenge_idwall.client.HttpClientService;
 import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
-import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectResponseDTO;
+import com.dev.torhugo.challenge_idwall.mapper.PersonMapper;
 import com.dev.torhugo.challenge_idwall.repositories.PersonRepository;
 import com.dev.torhugo.challenge_idwall.service.WebScrapingService;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public abstract class AbstractWebScrapingService implements WebScrapingService {
-    public static final String HOST_FBI = "https://api.fbi.gov/";
-    public static final String PATH_FBI = "@wanted";
-    public static Integer INITIAL_VALUE = 1;
+    static Integer initialValue = 1;
 
     private final PersonRepository personRepository;
+    private final PersonMapper personMapper;
 
     @Override
     public <T> PersonModel mappingToPerson(final T response) {
         if (response instanceof ObjectItemResponseDTO item){
-            return PersonModel.builder()
-                    .criminalClassification(item.getPersonClassification())
-                    .datePublication(item.getPublication())
-                    .personDescription(item.getDescription())
-                    .titlePublication(item.getTitle())
-                    .build();
+            return personMapper.mapperToModel(item);
         }
         return null;
     }

@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import static com.dev.torhugo.challenge_idwall.util.StringUtil.generateBaseUri;
+import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.USER_AGENT;
 
 
 @Component
@@ -22,8 +23,6 @@ import static com.dev.torhugo.challenge_idwall.util.StringUtil.generateBaseUri;
 @Slf4j
 public class HttpClientServiceImpl implements HttpClientService {
     private final RestTemplate restTemplate = new RestTemplate();
-
-    private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299";
 
     @Override
     public ObjectResponseDTO requestToFBI(final String host,
