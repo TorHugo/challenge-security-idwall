@@ -1,4 +1,12 @@
 package com.dev.torhugo.challenge_idwall.repositories;
 
+import com.dev.torhugo.challenge_idwall.lib.data.domain.CharacteristicModel;
+
 public interface CharacteristicRepository {
+    /**
+     * Save to database.
+     *
+     * @param characteristicModel the characteristic model
+     */
+    void save(final CharacteristicModel characteristicModel);
 }

@@ -13,4 +13,6 @@ public interface WebScrapingService {
 
     <T> PersonModel mappingToPerson(final T response);
     PersonModel savingToDatabase(final PersonModel personModel);
+    <T> void savingToDatabase(final PersonModel personModel, final T item);
+    PersonModel retrieveByExternalReference(final String externalReference);
 }

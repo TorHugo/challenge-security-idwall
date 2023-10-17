@@ -8,12 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonMapperImpl implements PersonMapper {
     @Override
-    public PersonModel mapperToModel(ObjectItemResponseDTO item) {
+    public PersonModel mapperToModel(final ObjectItemResponseDTO item) {
         return PersonModel.builder()
                 .criminalClassification(item.getPersonClassification())
                 .datePublication(item.getPublication())
                 .personDescription(item.getDescription())
                 .titlePublication(item.getTitle())
+                .externalId(item.getUid())
+                .inActive(Boolean.TRUE)
                 .build();
     }
 }

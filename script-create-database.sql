@@ -1,14 +1,32 @@
+DROP TABLE IF EXISTS file_tb;
+DROP TABLE IF EXISTS crime_tb;
+DROP TABLE IF EXISTS image_tb;
+DROP TABLE IF EXISTS marks_tb;
+DROP TABLE IF EXISTS characteristic_tb;
+DROP TABLE IF EXISTS alias_tb;
+DROP TABLE IF EXISTS person_tb;
+
 -- Criação da tabela 'person_tb'
+
 CREATE TABLE person_tb (
                            person_id BIGSERIAL PRIMARY KEY,
                            criminal_classification VARCHAR(500),
                            dt_publication VARCHAR(500),
-                           person_description VARCHAR(500),
+                           person_description VARCHAR(2500),
                            title_of_publication VARCHAR(500),
                            external_id VARCHAR(500),
+                           in_active  INT,
                            created_at TIMESTAMPTZ DEFAULT NOW(),
                            updated_at TIMESTAMP
 );
+
+CREATE INDEX IX01_PERSON 
+ON person_tb (title_of_publication);
+
+CREATE INDEX IX02_PERSON 
+ON person_tb (external_id);
+
+SELECT * FROM person_tb;
 
 -- Criação da tabela 'characteristic_tb'
 CREATE TABLE characteristic_tb (
