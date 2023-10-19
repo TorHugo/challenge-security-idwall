@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ObjectResponseDTO {
+public class ObjectFbiResponseDTO {
     private Long total;
     private List<ObjectItemResponseDTO> items;
     private Integer page;

@@ -1,5 +1,7 @@
 package com.dev.torhugo.challenge_idwall.lib.data.dto.fbi;
 
+import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.initial.FileResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.initial.ImageResponseDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

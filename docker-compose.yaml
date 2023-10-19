@@ -13,7 +13,7 @@ services:
 
   spring-boot-app:
     container_name: challenge-idwall-backend
-    image: challenge-idwall-backend:v.0.0.5
+    image: challenge-idwall-backend:v.0.0.6
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres

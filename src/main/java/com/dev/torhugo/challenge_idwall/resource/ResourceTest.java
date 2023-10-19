@@ -23,7 +23,7 @@ public class ResourceTest implements HubResource {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
         queryParams.add("pageSize", "20");
         queryParams.add("page", "1");
-        Object o = service.requestToFBI("https://api.fbi.gov", "/@wanted", queryParams);
+        Object o = service.initialRequestFbi("https://api.fbi.gov", "/@wanted", queryParams);
 
         return returnSuccess(o.toString());
     }

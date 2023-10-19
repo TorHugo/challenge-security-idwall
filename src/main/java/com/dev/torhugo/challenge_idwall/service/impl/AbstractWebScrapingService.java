@@ -15,7 +15,7 @@ import java.util.Objects;
 @Service
 @AllArgsConstructor
 public abstract class AbstractWebScrapingService implements WebScrapingService {
-    static Integer initialValue = 50;
+    static Integer initialValue = 1;
 
     private final PersonRepository personRepository;
     private final AliasRepository aliasRepository;

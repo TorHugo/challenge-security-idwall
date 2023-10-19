@@ -1,4 +1,4 @@
-package com.dev.torhugo.challenge_idwall.lib.data.dto.fbi;
+package com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.initial;
 
 import lombok.Data;
 

@@ -2,7 +2,7 @@ package com.dev.torhugo.challenge_idwall.service.impl;
 
 import com.dev.torhugo.challenge_idwall.client.HttpClientService;
 import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
-import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectFbiResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.ResourceNotFoundException;
 import com.dev.torhugo.challenge_idwall.mapper.*;
 import com.dev.torhugo.challenge_idwall.repositories.*;
@@ -36,7 +36,7 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
         try {
             while (true){
                 log.info("[1] - PageSize: {}.", initialValue);
-                final ObjectResponseDTO response = requestToFBI(initialValue);
+                final ObjectFbiResponseDTO response = requestToFBI(initialValue);
                 log.info("[2] - Validating to response.");
                 if (response.getItems().isEmpty()){
                     log.info("[3] - No response.");
@@ -55,11 +55,11 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
         }
     }
 
-    private ObjectResponseDTO requestToFBI(final Integer initialValue) {
-        return service.requestToFBI(HOST_FBI, PATH_FBI, buildRequestParams(initialValue));
+    private ObjectFbiResponseDTO requestToFBI(final Integer initialValue) {
+        return service.initialRequestFbi(HOST_FBI, PATH_FBI, buildRequestParams(initialValue));
     }
 
-    private void savingToResponse(final ObjectResponseDTO response) {
+    private void savingToResponse(final ObjectFbiResponseDTO response) {
         response.getItems().forEach(item -> {
             log.info("[3.1] - Validating exists by externalReference.");
             if (validatingExists(item.getUid())){
