@@ -2,6 +2,10 @@ package com.dev.torhugo.challenge_idwall.service.impl;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.*;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.ObjectInterpolResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.image.ObjectResponseImageDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.initial.NoticeResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.notice.ObjectInterpolResponseNoticeDTO;
 import com.dev.torhugo.challenge_idwall.mapper.*;
 import com.dev.torhugo.challenge_idwall.repositories.*;
 import com.dev.torhugo.challenge_idwall.service.WebScrapingService;
@@ -11,6 +15,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateEmptyList;
+import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateObjectNonNull;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +43,8 @@ public abstract class AbstractWebScrapingService implements WebScrapingService {
     public <T> PersonModel mappingToPerson(final T response) {
         if (response instanceof ObjectItemResponseDTO item){
             return personMapper.mapperToModel(item);
+        } else if (response instanceof NoticeResponseDTO notice){
+            return personMapper.mapperToModel(notice);
         }
         return null;
     }
@@ -53,11 +62,12 @@ public abstract class AbstractWebScrapingService implements WebScrapingService {
 
     @Override
     public <T> void savingToDatabase(final PersonModel personModel,
-                                     final T item) {
+                                     final T item,
+                                     final T image) {
         CharacteristicModel characteristicModel;
-        List<AliasModel> lsAliases;
+        List<AliasModel> lsAliases = new ArrayList<>();
         List<CrimeModel> lsCrimes;
-        List<FileModel> lsFiles;
+        List<FileModel> lsFiles = new ArrayList<>();
         List<ImageModel> lsImages;
         List<MarksModel> lsMarks;
 
@@ -69,17 +79,27 @@ public abstract class AbstractWebScrapingService implements WebScrapingService {
             lsImages = imageMapper.mappingToResponse(personModel, response);
             lsMarks = marksMapper.mappingToResponse(personModel, response);
         } else {
-            return;
+            final ObjectInterpolResponseNoticeDTO responseInterpol = (ObjectInterpolResponseNoticeDTO) item;
+            final ObjectResponseImageDTO imageInterpol = (ObjectResponseImageDTO) image;
+            characteristicModel = characteristicMapper.mappingToRespose(personModel, responseInterpol);
+            lsCrimes = crimeMapper.mappingToResponse(personModel, responseInterpol);
+            lsImages = imageMapper.mappingToResponse(personModel, imageInterpol);
+            lsMarks = marksMapper.mappingToResponse(personModel, responseInterpol);
         }
 
-        savingToCharacteristic(characteristicModel);
-        savingToAliases(lsAliases);
-        savingToCrimes(lsCrimes);
-        savingToFiles(lsFiles);
-        savingToImages(lsImages);
-        savingToMarks(lsMarks);
+        if (Objects.nonNull(characteristicModel))
+            savingToCharacteristic(characteristicModel);
+        if (validateEmptyList(lsAliases))
+            savingToAliases(lsAliases);
+        if (validateEmptyList(lsCrimes))
+            savingToCrimes(lsCrimes);
+        if (validateEmptyList(lsFiles))
+            savingToFiles(lsFiles);
+        if (validateEmptyList(lsImages))
+            savingToImages(lsImages);
+        if (validateEmptyList(lsMarks))
+            savingToMarks(lsMarks);
     }
-
     private void savingToCharacteristic(final CharacteristicModel characteristicModel) {
         characteristicRepository.save(characteristicModel);
     }

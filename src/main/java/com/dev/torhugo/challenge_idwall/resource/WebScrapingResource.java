@@ -1,5 +1,6 @@
 package com.dev.torhugo.challenge_idwall.resource;
 
+import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 import com.dev.torhugo.challenge_idwall.service.WebScrapingService;
 import com.dev.torhugo.challenge_idwall.service.factory.WebScrapingFactory;
 import com.dev.torhugo.challenge_idwall.util.resource.HubResource;
@@ -18,7 +19,7 @@ public class WebScrapingResource implements HubResource {
     private final WebScrapingFactory webScrapingFactory;
 
     @PostMapping("/{agency}")
-    public ResponseEntity<HubResponse<Object>> webScrapingStarter(final @PathVariable String agency){
+    public ResponseEntity<HubResponse<ResponseFinal>> webScrapingStarter(final @PathVariable String agency){
         WebScrapingService service = webScrapingFactory.getProcessor(agency);
         return returnSuccess(service.webScrapingMethod());
     }

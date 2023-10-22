@@ -7,7 +7,7 @@ public interface MarksRepository {
     /**
      * Save to database.
      *
-     * @param marksMapper the marks mapper
+     * @param marksModel the marks mapper
      */
     void save(final MarksModel marksModel);
 }

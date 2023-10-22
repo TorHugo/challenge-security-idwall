@@ -3,6 +3,8 @@ package com.dev.torhugo.challenge_idwall.service.impl;
 import com.dev.torhugo.challenge_idwall.client.HttpClientService;
 import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectFbiResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.ResourceNotFoundException;
 import com.dev.torhugo.challenge_idwall.mapper.*;
 import com.dev.torhugo.challenge_idwall.repositories.*;
@@ -13,10 +15,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.HOST_FBI;
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_FBI;
+import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateEmptyList;
+import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateObjectNull;
+import static java.lang.Thread.sleep;
 
 @Component
 @Slf4j
@@ -28,17 +36,23 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
     }
 
     private final HttpClientService service;
+    private Integer items = 1;
 
     @Override
     @Transactional
-    public Object webScrapingMethod() {
+    public ResponseFinal webScrapingMethod() {
         log.info("[FBI] - Initial process web-scraping.");
+        final LocalDateTime startProcess = LocalDateTime.now();
         try {
             while (true){
                 log.info("[1] - PageSize: {}.", initialValue);
                 final ObjectFbiResponseDTO response = requestToFBI(initialValue);
                 log.info("[2] - Validating to response.");
-                if (response.getItems().isEmpty()){
+                if (validateObjectNull(response)) {
+                    log.info("[3] - No response.");
+                    break;
+                }
+                if (!validateEmptyList(response.getItems())) {
                     log.info("[3] - No response.");
                     break;
                 }
@@ -46,12 +60,26 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
                 savingToResponse(response);
                 log.info("[4] - Increment pageSize.");
                 initialValue += 1;
+                log.info("[5] - Adding sleep 2s.");
+                sleep();
             }
 
-            return initialValue;
+            return ResponseFinal.builder()
+                    .totalProcessItems(items)
+                    .startProcess(startProcess)
+                    .endProcess(LocalDateTime.now())
+                    .build();
         } catch (RuntimeException e) {
             e.printStackTrace();
             throw new ResourceNotFoundException("[ERROR] An error occurred while web-scraping. Error: " + e.getMessage());
+        }
+    }
+
+    private void sleep() {
+        try {
+            Thread.sleep(2000); // Aguarda 1 segundo (1000 milissegundos)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -69,7 +97,9 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
             log.info("[3.2] - Saving to person in the database.");
             final PersonModel personModel = super.savingToDatabase(super.mappingToPerson(item));
             log.info("[3.3] - Saving to database.");
-            super.savingToDatabase(personModel, item);
+            super.savingToDatabase(personModel, item, null);
+            log.info("[3.4] - Count items process.");
+            items++;
         });
     }
 

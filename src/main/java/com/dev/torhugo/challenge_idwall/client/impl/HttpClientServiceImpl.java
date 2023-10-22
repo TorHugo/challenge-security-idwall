@@ -53,6 +53,9 @@ public class HttpClientServiceImpl implements HttpClientService {
                        HttpClientErrorException.NotFound exception) {
             exception.printStackTrace();
             throw new ResourceNotFoundException("Não foi possível realizar a requisição. Error: " + exception.getMessage());
+        } catch (final HttpClientErrorException.TooManyRequests exception) {
+            exception.printStackTrace();
+            return null;
         }
     }
 

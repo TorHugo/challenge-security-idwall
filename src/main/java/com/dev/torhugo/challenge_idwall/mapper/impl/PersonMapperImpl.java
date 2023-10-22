@@ -2,6 +2,9 @@ package com.dev.torhugo.challenge_idwall.mapper.impl;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.ObjectInterpolResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.initial.NoticeResponseDTO;
+import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.notice.ObjectInterpolResponseNoticeDTO;
 import com.dev.torhugo.challenge_idwall.mapper.PersonMapper;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,18 @@ public class PersonMapperImpl implements PersonMapper {
                 .personDescription(item.getDescription())
                 .titlePublication(item.getTitle())
                 .externalId(item.getUid())
+                .inActive(Boolean.TRUE)
+                .build();
+    }
+
+    @Override
+    public PersonModel mapperToModel(final NoticeResponseDTO notice) {
+        return PersonModel.builder()
+                .criminalClassification("red")
+                .datePublication(null)
+                .personDescription(notice.getName().concat(" ").concat(notice.getForename()))
+                .titlePublication(notice.getName().concat(" ").concat(notice.getForename()))
+                .externalId(notice.getEntityId())
                 .inActive(Boolean.TRUE)
                 .build();
     }
