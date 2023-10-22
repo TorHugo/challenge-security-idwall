@@ -1,7 +1,7 @@
 package com.dev.torhugo.challenge_idwall.mapper.impl;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.FileModel;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.FileModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
 import com.dev.torhugo.challenge_idwall.mapper.FileMapper;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,7 @@
 package com.dev.torhugo.challenge_idwall.repositories.impl;
 
 import com.dev.torhugo.challenge_idwall.lib.data.database.DatabaseService;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.CrimeModel;
-import com.dev.torhugo.challenge_idwall.repositories.CharacteristicRepository;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.CrimeModel;
 import com.dev.torhugo.challenge_idwall.repositories.CrimeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

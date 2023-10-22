@@ -1,9 +1,8 @@
 package com.dev.torhugo.challenge_idwall.service.impl;
 
 import com.dev.torhugo.challenge_idwall.client.HttpClientService;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectFbiResponseDTO;
-import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.ResourceNotFoundException;
 import com.dev.torhugo.challenge_idwall.mapper.*;
@@ -15,10 +14,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.function.Consumer;
 
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.HOST_FBI;
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_FBI;

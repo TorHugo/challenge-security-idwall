@@ -1,5 +1,6 @@
-package com.dev.torhugo.challenge_idwall.lib.data.domain;
+package com.dev.torhugo.challenge_idwall.lib.data.domain.service;
 
+import com.dev.torhugo.challenge_idwall.lib.data.domain.BaseModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "image_tb")
-public class ImageModel extends BaseModel{
+@Table(name = "file_tb")
+public class FileModel extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "image_id")
-    private Long imageId;
+    @Column(name = "file_id")
+    private Long fileId;
     private Long personId;
     private String externalUri;
-    private String imageCaption;
+    private String languageFile;
 }

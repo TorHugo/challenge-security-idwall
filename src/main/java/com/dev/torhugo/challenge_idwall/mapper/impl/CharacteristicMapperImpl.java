@@ -1,7 +1,7 @@
 package com.dev.torhugo.challenge_idwall.mapper.impl;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.CharacteristicModel;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.CharacteristicModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.notice.ObjectInterpolResponseNoticeDTO;
 import com.dev.torhugo.challenge_idwall.mapper.CharacteristicMapper;

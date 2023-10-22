@@ -1,5 +1,6 @@
-package com.dev.torhugo.challenge_idwall.lib.data.domain;
+package com.dev.torhugo.challenge_idwall.lib.data.domain.service;
 
+import com.dev.torhugo.challenge_idwall.lib.data.domain.BaseModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

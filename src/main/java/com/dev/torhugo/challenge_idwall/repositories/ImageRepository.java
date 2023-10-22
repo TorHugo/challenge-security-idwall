@@ -1,6 +1,6 @@
 package com.dev.torhugo.challenge_idwall.repositories;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.ImageModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.ImageModel;
 
 public interface ImageRepository {
     /**

@@ -1,6 +1,6 @@
 package com.dev.torhugo.challenge_idwall.repositories;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.CharacteristicModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.CharacteristicModel;
 
 public interface CharacteristicRepository {
     /**

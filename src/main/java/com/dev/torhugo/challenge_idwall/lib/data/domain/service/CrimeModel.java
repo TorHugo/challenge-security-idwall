@@ -1,5 +1,6 @@
-package com.dev.torhugo.challenge_idwall.lib.data.domain;
+package com.dev.torhugo.challenge_idwall.lib.data.domain.service;
 
+import com.dev.torhugo.challenge_idwall.lib.data.domain.BaseModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,13 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "marks_tb")
-public class MarksModel extends BaseModel{
+@Table(name = "crime_tb")
+public class CrimeModel extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "marks_id")
-    private Long marksId;
+    @Column(name = "crime_id")
+    private Long crimeId;
     private Long personId;
-    private String marksDescription;
+    private String crimeDescription;
 }

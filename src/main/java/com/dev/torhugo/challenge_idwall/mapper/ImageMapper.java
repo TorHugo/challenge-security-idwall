@@ -1,7 +1,7 @@
 package com.dev.torhugo.challenge_idwall.mapper;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.ImageModel;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.ImageModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.image.ObjectResponseImageDTO;
 

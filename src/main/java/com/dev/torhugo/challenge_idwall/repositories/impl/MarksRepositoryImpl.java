@@ -1,9 +1,7 @@
 package com.dev.torhugo.challenge_idwall.repositories.impl;
 
 import com.dev.torhugo.challenge_idwall.lib.data.database.DatabaseService;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.MarksModel;
-import com.dev.torhugo.challenge_idwall.mapper.MarksMapper;
-import com.dev.torhugo.challenge_idwall.repositories.ImageRepository;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.MarksModel;
 import com.dev.torhugo.challenge_idwall.repositories.MarksRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

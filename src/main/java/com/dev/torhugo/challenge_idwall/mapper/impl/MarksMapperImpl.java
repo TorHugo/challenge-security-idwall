@@ -1,13 +1,12 @@
 package com.dev.torhugo.challenge_idwall.mapper.impl;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.MarksModel;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.MarksModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectItemResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.notice.ObjectInterpolResponseNoticeDTO;
 import com.dev.torhugo.challenge_idwall.mapper.MarksMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;

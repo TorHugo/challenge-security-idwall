@@ -1,7 +1,6 @@
 package com.dev.torhugo.challenge_idwall.repositories;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.MarksModel;
-import com.dev.torhugo.challenge_idwall.mapper.MarksMapper;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.MarksModel;
 
 public interface MarksRepository {
     /**

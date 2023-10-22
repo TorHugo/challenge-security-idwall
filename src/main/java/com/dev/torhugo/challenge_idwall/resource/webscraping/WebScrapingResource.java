@@ -1,4 +1,4 @@
-package com.dev.torhugo.challenge_idwall.resource;
+package com.dev.torhugo.challenge_idwall.resource.webscraping;
 
 import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 import com.dev.torhugo.challenge_idwall.service.WebScrapingService;

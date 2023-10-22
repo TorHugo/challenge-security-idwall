@@ -1,7 +1,7 @@
 package com.dev.torhugo.challenge_idwall.service.impl;
 
 import com.dev.torhugo.challenge_idwall.client.HttpClientService;
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.ObjectInterpolResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.image.ObjectResponseImageDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.initial.LinkResponseDTO;

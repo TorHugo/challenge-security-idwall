@@ -8,6 +8,7 @@ public class ChallengeIdwallApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ChallengeIdwallApplication.class, args);
+        System.out.println(System.getenv());
     }
 
 }

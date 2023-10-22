@@ -1,6 +1,6 @@
 package com.dev.torhugo.challenge_idwall.service;
 
-import com.dev.torhugo.challenge_idwall.lib.data.domain.PersonModel;
+import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 
 public interface WebScrapingService {
