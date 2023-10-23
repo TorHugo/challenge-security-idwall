@@ -8,15 +8,15 @@ public class ValidateUtil {
 
     }
 
-    public static <T> Boolean validateObjectNull(final T item){
+    public static <T> boolean validateObjectIsNull(final T item){
         return Objects.isNull(item);
     }
 
-    public static <T> Boolean validateObjectNonNull(final T item){
+    public static <T> boolean validateObjectNonNull(final T item){
         return Objects.nonNull(item);
     }
 
-    public static <T> Boolean validateEmptyList(final T item){
+    public static <T> boolean validateEmptyList(final T item){
         if (validateObjectNonNull(item) &&
                 item instanceof ArrayList<?> list &&
                 !list.isEmpty())

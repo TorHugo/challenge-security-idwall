@@ -2,6 +2,8 @@ package com.dev.torhugo.challenge_idwall.repositories;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.user.UserModel;
 
+import java.util.Optional;
+
 public interface UserRepository {
 
     /**
@@ -10,7 +12,7 @@ public interface UserRepository {
      * @param userEmail the user email
      * @return the user model
      */
-    UserModel findByEmail(final String userEmail);
+    Optional<UserModel> findByEmail(final String userEmail);
 
     /**
      * Save to user in the database.

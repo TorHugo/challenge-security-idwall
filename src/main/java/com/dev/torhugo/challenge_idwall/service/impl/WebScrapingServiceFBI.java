@@ -20,7 +20,7 @@ import java.util.Objects;
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.HOST_FBI;
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_FBI;
 import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateEmptyList;
-import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateObjectNull;
+import static com.dev.torhugo.challenge_idwall.util.ValidateUtil.validateObjectIsNull;
 import static java.lang.Thread.sleep;
 
 @Component
@@ -45,7 +45,7 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
                 log.info("[1] - PageSize: {}.", initialValue);
                 final ObjectFbiResponseDTO response = requestToFBI(initialValue);
                 log.info("[2] - Validating to response.");
-                if (validateObjectNull(response)) {
+                if (validateObjectIsNull(response)) {
                     log.info("[3] - No response.");
                     break;
                 }

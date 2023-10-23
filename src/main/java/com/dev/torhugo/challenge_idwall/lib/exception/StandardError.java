@@ -1,5 +1,6 @@
 package com.dev.torhugo.challenge_idwall.lib.exception;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,8 @@ import java.time.Instant;
 public class StandardError implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
 	private Instant timestamp;
 	private Integer status;
 	private String error;

@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_REGISTER_USER;
 
 @Repository
@@ -28,12 +30,10 @@ public class UserRepositoryImpl implements UserRepository{
     private String queryPersistUser;
 
     @Override
-    public UserModel findByEmail(final String userEmail) {
+    public Optional<UserModel> findByEmail(final String userEmail) {
         return service.retrieve(queryRetrievalUserByEmail,
                         buildParams(userEmail),
-                        BeanPropertyRowMapper.newInstance(UserModel.class))
-                .stream().findFirst()
-                .orElseThrow(() -> new DataBaseException("User NotFound!", userEmail, PATH_REGISTER_USER, "[POST]"));
+                        BeanPropertyRowMapper.newInstance(UserModel.class));
     }
 
     @Override

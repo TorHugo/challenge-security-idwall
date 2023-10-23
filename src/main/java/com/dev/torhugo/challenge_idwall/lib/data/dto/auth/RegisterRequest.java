@@ -10,4 +10,9 @@ public record RegisterRequest(
         String password,
         String phone
 ) {
+
+    public String getCompletName(){
+        return name.concat(" ").concat(lastname);
+    }
+
 }

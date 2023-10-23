@@ -42,7 +42,7 @@ public class ResourceExceptionHandler {
 		err.setStatus(badRequest.value());
 		err.setError(exception.getError().toString());
 		err.setMessage(exception.getMessage());
-		err.setPath(request.getRequestURI());
+		err.setPath(exception.getMethod().concat(" ").concat(exception.getHref()));
 
 		return ResponseEntity.status(badRequest).body(err);
 	}

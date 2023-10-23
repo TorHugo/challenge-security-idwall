@@ -1,5 +1,6 @@
 package com.dev.torhugo.challenge_idwall.config;
 
+import com.dev.torhugo.challenge_idwall.lib.exception.impl.DataBaseException;
 import com.dev.torhugo.challenge_idwall.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_REGISTER_USER;
+
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfiguration {
@@ -20,7 +23,8 @@ public class ApplicationConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> userRepository.findByEmail(username);
+        return username -> userRepository.findByEmail(username)
+                .orElseThrow(() -> new DataBaseException("User NotFound!", username, PATH_REGISTER_USER, "[POST]"));
     }
 
     @Bean
