@@ -1,8 +1,8 @@
-package com.dev.torhugo.challenge_idwall.repositories.impl;
+package com.dev.torhugo.challenge_idwall.repository.impl;
 
 import com.dev.torhugo.challenge_idwall.lib.data.database.DatabaseService;
 import com.dev.torhugo.challenge_idwall.lib.data.domain.service.AliasModel;
-import com.dev.torhugo.challenge_idwall.repositories.AliasRepository;
+import com.dev.torhugo.challenge_idwall.repository.AliasRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

@@ -15,4 +15,5 @@ public class ConstantsUtil {
     public static final String SECRET_KEY = "cmVhc29uZGVzY3JpYmVuZWVkZWRmaWxscmlnaHRleGFjdGluZGl2aWR1YWxzdGVtc2M=";
     public static final String PATH_REGISTER_USER = "/api/v1/auth/register";
     public static final String PATH_AUTHENTICATE_USER = "/api/v1/auth/authenticate";
+    public static final String PATH_FIND_SUSPECT_BY_ID = "/api/v1/verify-suspect/";
 }

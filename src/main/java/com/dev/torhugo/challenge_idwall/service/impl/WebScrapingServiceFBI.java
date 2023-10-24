@@ -6,7 +6,7 @@ import com.dev.torhugo.challenge_idwall.lib.data.dto.fbi.ObjectFbiResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.webscraping.ResponseFinal;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.ResourceNotFoundException;
 import com.dev.torhugo.challenge_idwall.mapper.*;
-import com.dev.torhugo.challenge_idwall.repositories.*;
+import com.dev.torhugo.challenge_idwall.repository.*;
 import com.dev.torhugo.challenge_idwall.util.AgencyType;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -74,7 +74,7 @@ public class WebScrapingServiceFBI extends AbstractWebScrapingService {
 
     private void sleep() {
         try {
-            Thread.sleep(2000); // Aguarda 1 segundo (1000 milissegundos)
+            Thread.sleep(3000); // Aguarda 1 segundo (1000 milissegundos)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

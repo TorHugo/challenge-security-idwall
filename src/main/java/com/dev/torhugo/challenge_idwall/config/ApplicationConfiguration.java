@@ -1,7 +1,7 @@
 package com.dev.torhugo.challenge_idwall.config;
 
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.DataBaseException;
-import com.dev.torhugo.challenge_idwall.repositories.UserRepository;
+import com.dev.torhugo.challenge_idwall.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -20,6 +20,8 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
 
     private static final String[] PUBLIC_REQUEST = {"/actuator/**", "/api/v1/auth/**"};
+    private static final String[] ADMIN_REQUEST = {"api/v1/web-scraping/**"};
+    private static final String ROLE_ADMIN = "ROLE_ADMIN";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -29,6 +31,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(PUBLIC_REQUEST)
                 .permitAll()
+                .requestMatchers(ADMIN_REQUEST)
+                .hasAnyAuthority(ROLE_ADMIN)
                 .anyRequest()
                 .authenticated()
                 .and()

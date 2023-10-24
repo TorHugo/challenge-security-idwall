@@ -6,7 +6,7 @@ import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.image.ObjectRespon
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.initial.NoticeResponseDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.interpol.notice.ObjectInterpolResponseNoticeDTO;
 import com.dev.torhugo.challenge_idwall.mapper.*;
-import com.dev.torhugo.challenge_idwall.repositories.*;
+import com.dev.torhugo.challenge_idwall.repository.*;
 import com.dev.torhugo.challenge_idwall.service.WebScrapingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

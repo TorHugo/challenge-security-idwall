@@ -1,4 +1,4 @@
-package com.dev.torhugo.challenge_idwall.resource.auth;
+package com.dev.torhugo.challenge_idwall.resource.service;
 
 import com.dev.torhugo.challenge_idwall.lib.data.dto.auth.AuthenticationRequest;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.auth.AuthenticationResponse;

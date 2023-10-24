@@ -13,13 +13,13 @@ services:
 
   spring-boot-app:
     container_name: challenge-idwall-backend
-    image: challenge-idwall-backend:v.1.0.3
+    image: challenge-idwall-backend:v.1.0.4
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 12345
       USER_NAME_EMAIL: ${USER_NAME_EMAIL}
-      USER_NAME_PASSWORD: ${USER_NAME_PASSWORD} # TODO - Validar password.
+      USER_NAME_PASSWORD: ${USER_PASSWORD_EMAIL}
     ports:
       - "8080:8080"
     depends_on:

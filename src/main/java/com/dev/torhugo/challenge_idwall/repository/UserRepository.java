@@ -1,7 +1,8 @@
-package com.dev.torhugo.challenge_idwall.repositories;
+package com.dev.torhugo.challenge_idwall.repository;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.user.UserModel;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository {
@@ -9,8 +10,8 @@ public interface UserRepository {
     /**
      * Find by email user model.
      *
-     * @param userEmail the user email
-     * @return the user model
+     * @param userEmail
+     * @return {@link UserModel}
      */
     Optional<UserModel> findByEmail(final String userEmail);
 

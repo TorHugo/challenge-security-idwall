@@ -1,6 +1,8 @@
-package com.dev.torhugo.challenge_idwall.repositories;
+package com.dev.torhugo.challenge_idwall.repository;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.service.PersonModel;
+
+import java.util.List;
 
 public interface PersonRepository {
     /**
@@ -17,4 +19,12 @@ public interface PersonRepository {
      * @return the person model
      */
     PersonModel retrieveByExternalReference(final String externalId);
+
+
+    /**
+     * Find all by suspect involvement AML.
+     *
+     * @return {@link PersonModel}
+     */
+    List<PersonModel> findAllBySuspectAml();
 }

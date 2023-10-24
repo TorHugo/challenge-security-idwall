@@ -6,7 +6,7 @@ import com.dev.torhugo.challenge_idwall.lib.data.dto.auth.AuthenticationResponse
 import com.dev.torhugo.challenge_idwall.lib.data.dto.auth.RegisterRequest;
 import com.dev.torhugo.challenge_idwall.lib.exception.impl.DataBaseException;
 import com.dev.torhugo.challenge_idwall.mapper.UserMapper;
-import com.dev.torhugo.challenge_idwall.repositories.UserRepository;
+import com.dev.torhugo.challenge_idwall.repository.UserRepository;
 import com.dev.torhugo.challenge_idwall.security.service.JwtService;
 import com.dev.torhugo.challenge_idwall.service.EmailService;
 import com.dev.torhugo.challenge_idwall.service.UserService;
@@ -16,8 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
-
-import javax.print.DocFlavor;
 
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_AUTHENTICATE_USER;
 import static com.dev.torhugo.challenge_idwall.util.ConstantsUtil.PATH_REGISTER_USER;

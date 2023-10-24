@@ -1,4 +1,4 @@
-package com.dev.torhugo.challenge_idwall.repositories;
+package com.dev.torhugo.challenge_idwall.repository;
 
 import com.dev.torhugo.challenge_idwall.lib.data.domain.service.CrimeModel;
 
