@@ -27,4 +27,12 @@ public interface PersonRepository {
      * @return {@link PersonModel}
      */
     List<PersonModel> findAllBySuspectAml();
+
+    /**
+     * Retrieve by suspect id person model.
+     *
+     * @param suspectId the suspect id
+     * @return the person model
+     */
+    PersonModel retrieveBySuspectId(final String suspectId);
 }

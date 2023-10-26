@@ -51,6 +51,11 @@ public class PersonRepositoryImpl implements PersonRepository {
                 BeanPropertyRowMapper.newInstance(PersonModel.class));
     }
 
+    @Override
+    public PersonModel retrieveBySuspectId(final String suspectId) {
+        return null;
+    }
+
     private MapSqlParameterSource buildParam(final String externalId) {
         return new MapSqlParameterSource("externalId", externalId);
     }
