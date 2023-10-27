@@ -63,7 +63,6 @@ public class DatabaseServiceImpl implements DatabaseService {
             return Optional.empty();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.getCause().getMessage());
             return Optional.empty();
         }
     }

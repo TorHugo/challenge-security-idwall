@@ -3,6 +3,8 @@ package com.dev.torhugo.challenge_idwall.service;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.verify.ResponseVerifyAmlDTO;
 import com.dev.torhugo.challenge_idwall.lib.data.dto.verify.ResponseVerifySuspectDTO;
 
+import java.util.List;
+
 public interface VerifySuspectService {
 
     /**
@@ -19,5 +21,13 @@ public interface VerifySuspectService {
      * @param suspectId the suspect id
      * @return the response verify suspect dto
      */
-    ResponseVerifySuspectDTO bySuspectId(final String suspectId);
+    ResponseVerifySuspectDTO bySuspectId(final Long suspectId);
+
+    /**
+     * By suspect name response verify suspect dto.
+     *
+     * @param name the name
+     * @return the response verify suspect dto
+     */
+    List<ResponseVerifySuspectDTO> bySuspectName(final String name);
 }

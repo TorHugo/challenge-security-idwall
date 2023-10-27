@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,6 +26,9 @@ public class UserRepositoryImpl implements UserRepository {
     @Value("${SPS.USER_TP.WHERE.EMAIL}")
     private String queryRetrieveUserByEmail;
 
+    @Value("${SPS.USER_TP.WHERE.USER_ID}")
+    private String queryRetrieveUserById;
+
     @Value("${SPI.USER_TB}")
     private String queryPersistUser;
 
@@ -38,6 +42,18 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void save(final UserModel user) {
         service.persist(queryPersistUser, user);
+    }
+
+    @Override
+    public UserModel findById(final Long userId) {
+        return service.retrieve(queryRetrieveUserById,
+                buildParams(userId),
+                BeanPropertyRowMapper.newInstance(UserModel.class))
+                .orElse(null);
+    }
+
+    private MapSqlParameterSource buildParams(final Long userId) {
+        return new MapSqlParameterSource("userId", userId);
     }
 
     private MapSqlParameterSource buildParams(final String userEmail) {

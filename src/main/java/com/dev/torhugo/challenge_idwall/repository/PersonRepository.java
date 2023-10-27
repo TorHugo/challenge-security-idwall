@@ -34,5 +34,13 @@ public interface PersonRepository {
      * @param suspectId the suspect id
      * @return the person model
      */
-    PersonModel retrieveBySuspectId(final String suspectId);
+    PersonModel retrieveBySuspectId(final Long suspectId);
+
+    /**
+     * Retrieve by suspect name person model.
+     *
+     * @param name the name
+     * @return the person model
+     */
+    List<PersonModel> retrieveBySuspectName(final String name);
 }

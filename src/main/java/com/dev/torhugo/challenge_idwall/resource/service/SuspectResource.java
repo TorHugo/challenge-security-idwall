@@ -6,11 +6,11 @@ import com.dev.torhugo.challenge_idwall.service.VerifySuspectService;
 import com.dev.torhugo.challenge_idwall.util.resource.HubResource;
 import com.dev.torhugo.challenge_idwall.util.resource.HubResponse;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/verify-suspect")
@@ -26,7 +26,14 @@ public class SuspectResource implements HubResource {
 
     @GetMapping("/{suspect-id}")
     public ResponseEntity<HubResponse<ResponseVerifySuspectDTO>> bySuspectId(
-            @PathVariable("suspect-id") final String suspectId){
+            @PathVariable("suspect-id") final Long suspectId){
         return returnSuccess(service.bySuspectId(suspectId));
+    }
+
+    @GetMapping()
+    public ResponseEntity<HubResponse<List<ResponseVerifySuspectDTO>>> bySuspectName(
+            @RequestParam(name = "name") final String name
+    ){
+        return returnSuccess(service.bySuspectName(name));
     }
 }

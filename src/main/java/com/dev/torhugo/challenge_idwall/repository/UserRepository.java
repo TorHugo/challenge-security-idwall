@@ -21,4 +21,12 @@ public interface UserRepository {
      * @param user the user
      */
     void save(final UserModel user);
+
+    /**
+     * Find by id user model.
+     *
+     * @param userId the user id
+     * @return the user model
+     */
+    UserModel findById(final Long userId);
 }
