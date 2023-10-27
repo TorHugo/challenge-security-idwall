@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.dev.torhugo</groupId>
     <artifactId>challenge_idwall</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <name>42-Verify-Safe</name>
     <description>A 42VerifySafe oferece uma solução confiável para a verificação de antecedentes e segurança.
         Ela é projetada para atender às necessidades de quem procura verificar informações de antecedentes com facilidade e eficácia.</description>

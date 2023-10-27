@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "user_tb")
-public class UserModel  extends BaseModel implements UserDetails {
+public class UserModel extends BaseModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

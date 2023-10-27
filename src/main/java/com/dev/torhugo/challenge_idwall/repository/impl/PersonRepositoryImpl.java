@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,6 +32,12 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Value("${SPS.PERSON_TB.ALL_SUSPECT_AML}")
     private String queryRetrieveAllSuspectAML;
 
+    @Value("${SPS.PERSON_TB.WHERE.PERSON_ID}")
+    private String queryRetrieveByPersonId;
+
+    @Value("${SPS.PERSON_TB.WHERE.NAME}")
+    private String queryRetrieveByPersonName;
+
     @Override
     public void saving(final PersonModel personModel) {
         log.info("[-] saving()");
@@ -41,7 +48,8 @@ public class PersonRepositoryImpl implements PersonRepository {
     public PersonModel retrieveByExternalReference(final String externalId) {
         log.info("[-] retrieveByExternalReference()");
         return databaseService.retrieve(queryRetrievePersonByExternalId,
-                buildParam(externalId), BeanPropertyRowMapper.newInstance(PersonModel.class))
+                        buildParam(externalId),
+                        BeanPropertyRowMapper.newInstance(PersonModel.class))
                 .orElse(null);
     }
 
@@ -51,7 +59,30 @@ public class PersonRepositoryImpl implements PersonRepository {
                 BeanPropertyRowMapper.newInstance(PersonModel.class));
     }
 
+    @Override
+    public PersonModel retrieveBySuspectId(final Long suspectId) {
+        return databaseService.retrieve(queryRetrieveByPersonId,
+                        buildParamSuspectId(suspectId),
+                        BeanPropertyRowMapper.newInstance(PersonModel.class))
+                .orElse(null);
+    }
+
+    @Override
+    public List<PersonModel> retrieveBySuspectName(final String name) {
+        return databaseService.retrieveList(queryRetrieveByPersonName,
+                        buildParamSuspectName(name),
+                        BeanPropertyRowMapper.newInstance(PersonModel.class));
+    }
+
+    private MapSqlParameterSource buildParamSuspectName(final String name) {
+        return new MapSqlParameterSource("name", "%" + name + "%");
+    }
+
     private MapSqlParameterSource buildParam(final String externalId) {
         return new MapSqlParameterSource("externalId", externalId);
+    }
+
+    private MapSqlParameterSource buildParamSuspectId(final Long suspectId) {
+        return new MapSqlParameterSource("personId", suspectId);
     }
 }
