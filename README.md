@@ -1,14 +1,14 @@
 # 42-VerifySafe
 
 ## Descrição:
-A 42VerifySafe é a sua solução confiável para verificação de antecedentes e segurança. Com acesso direto às informações do FBI e Interpol, estamos comprometidos em <br/>
+A 42VerifySafe é a sua solução confiável para verificação de antecedentes e segurança. Com acesso direto às informações do FBI e Interpol, estamos comprometidos em
 ajudá-lo a tomar decisões de contratação informadas e seguras.<br/>
 
 **Por que Escolher a 42VerifySafe**?<br/>
-Estamos empenhados em fornecer uma solução de confiança que redefine a segurança e a eficácia nos processos de contratação. A 42VerifySafe não é apenas uma ferramenta,<br/>
-é uma parceria que coloca o poder das informações do FBI e da Interpol diretamente em suas mãos. Com essa aplicação, você terá a capacidade de proteger sua organização <br/>
-contra riscos imprevistos, garantindo que cada candidato seja cuidadosamente avaliado quanto a antecedentes e integridade. Oferecemos tranquilidade e a certeza de que sua <br/>
-equipe de RH está tomando decisões informadas e estratégicas, essenciais para o sucesso a longo prazo da sua organização. Escolha a 42VerifySafe e eleve o nível da segurança <br/>
+Estamos empenhados em fornecer uma solução de confiança que redefine a segurança e a eficácia nos processos de contratação. A 42VerifySafe não é apenas uma ferramenta,
+é uma parceria que coloca o poder das informações do FBI e da Interpol diretamente em suas mãos. Com essa aplicação, você terá a capacidade de proteger sua organização 
+contra riscos imprevistos, garantindo que cada candidato seja cuidadosamente avaliado quanto a antecedentes e integridade. Oferecemos tranquilidade e a certeza de que sua 
+equipe de RH está tomando decisões informadas e estratégicas, essenciais para o sucesso a longo prazo da sua organização. Escolha a 42VerifySafe e eleve o nível da segurança
 e confiabilidade em suas contratações!
 
 ## Versao:
