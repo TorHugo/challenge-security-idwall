@@ -17,7 +17,7 @@ e confiabilidade em suas contratações!
 ## Tecnologias:
 - Java 17
 - PostgreSQL
-- SpringBoot v3.1.0 (validation/ gson/ devtools/ jdbc/ lombok/ security/ jwt)
+- SpringBoot v3.1.0 (validation/ gson/ devtools/ jdbc/ lombok/ security/ jwt/ sendmail)
 - Docker
 
 
@@ -118,7 +118,8 @@ e confiabilidade em suas contratações!
 5. Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
 ## INTEGRAÇÃO:
-Asaas API (https://docs.asaas.com/).
+FBI API ([https://api.fbi.gov/](https://api.fbi.gov)).
+INTERPOL API ([https://ws-public.interpol.int/notices/v1](https://ws-public.interpol.int/notices/v1)).
 
 ## UTEIS
 Segue o link de informações adicionais da aplicação: 
