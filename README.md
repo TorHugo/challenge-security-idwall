@@ -1,4 +1,6 @@
 # 42-VerifySafe
+## Links:
+Documentação detalhada do projeto: ([notion](https://www.notion.so/42VerifySafe-c1e6d64c02d64676992220dd5d64c3ea?pvs=4)).
 
 ## Descrição:
 A 42VerifySafe é a sua solução confiável para verificação de antecedentes e segurança. Com acesso direto às informações do FBI e Interpol, estamos comprometidos em
